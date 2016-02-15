@@ -1,6 +1,6 @@
 <snippet>
-  <content><![CDATA[
-# ${1:Programació II}
+  <content>
+# Programació II
 My repository for publishing my work of Programació II.
 
 ## Credits
