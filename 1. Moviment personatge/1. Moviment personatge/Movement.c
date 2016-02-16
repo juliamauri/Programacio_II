@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 typedef struct{
-	int x;
-	int y;
+	unsigned short x;
+	unsigned short y;
 	char player;
 }Player;
 
