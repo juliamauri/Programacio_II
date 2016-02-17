@@ -52,7 +52,7 @@ void position(char *temp, char *pos, char(*map)[5]){
 	printf("Which direction you want to go (n/s/e/w/q)? ");
 	scanf_s("%c", pos);
 	fflush(stdin);
-	
+
 
 	*(map[hero.y] + hero.x) = *temp;
 
