@@ -18,7 +18,7 @@ int main(){									int num;							char menu = '\0';
 						while (menu != 'd'){															printf("\nWhat do you want to do?\n");
 								printf("a. Increment (use ++)\n");							printf("b. Decrement (use --)\n");
 												printf("c. Power of two\n");		printf("d. Quit.\n");
-																	scanf_s("%c", &menu);
+																	scanf_s("%c", menu);
 																								
 	fflush(stdin);																																	switch (menu){
 			case 'a':++num;break;case 'b':																										--num;
