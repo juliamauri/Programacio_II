@@ -7,7 +7,7 @@ The entered string won’t contain uppercase letters. */
 #include <string.h>
 
 void change(char aux[50]);
-char encode(char(*​text)[50]);
+void encode(char *​phrase);
 
 int main(){
 
@@ -18,8 +18,9 @@ int main(){
 	fgets(phrase, 50, stdin);
 	fflush(stdin);
 	change(phrase);
+	encode(&phrase);
 
-	printf("The value of phrase should be “%s”", encode(phrase));
+	printf("The value of phrase should be “%s”", phrase);
 
 	system("pause");
 	return 0;
@@ -36,34 +37,26 @@ void change(char aux[50]){
 	}
 }
 
-char ​encode(char (*​text)[50]){
-	char textencoded;
-	textencoded = (char*)malloc((strlen(*​text) + 1)*sizeof(char));
-	if (textencoded == NULL){
-		printf("Could not allocate memory.\n");
-		exit(1);
-	}
+void ​encode(char *phrase){
 
-	for (int i = 0; i <= strlen(*​text); i++){
-		switch ((*​text)[i])
+	for (int i = 0; i =< strlen(*phrase); i++){
+		switch (*(phrase + i))
 		{
 		case 'e':
-			textencoded[i] = '3';
+			*(phrase + i) = '3';
 			break;
 		case 'a':
-			textencoded[i] = '4';
+			*(phrase + i) = '4';
 			break;
 		case 'i':
-			textencoded[i] = '1';
+			*(phrase + i) = '1';
 			break;
 		case 'o':
-			textencoded[i] = '0';
+			*(phrase + i) = '0';
 			break;
 		default:
-			textencoded[i] = *​text[i];
+			*(phrase + i) = *(phrase + i);
 			break;
 		}
 	}
-	
-	return textencoded;
 }
