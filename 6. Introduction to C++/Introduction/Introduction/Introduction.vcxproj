@@ -67,6 +67,10 @@
     <ClCompile Include="Main.cpp">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
+    <ClCompile Include="Point.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

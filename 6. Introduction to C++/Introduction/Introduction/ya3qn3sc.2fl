@@ -1,0 +1,36 @@
+#include "Point.h"
+#include <stdio.h>
+
+Point::Point()
+{
+	printf("I bild a pointer with x %d and y %d.");
+}
+
+void Point::SetZero()
+{
+	x = 0;
+	y = 0;
+}
+
+void Point::SetPoint(int a, int b)
+{
+	x = a;
+	y = b;
+}
+
+void Point::SetPoint(Point data_referent)
+{
+	x = data_referent.x;
+	y = data_referent.y;
+}
+
+bool Point::isPointZero() const
+{
+	return x == 0 && y == 0;
+}
+
+void Point::DistanceTo(Point data_referent)
+{
+	x = data_referent.x - x;
+	y = data_referent.y - y;
+}

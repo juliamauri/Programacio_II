@@ -1,0 +1,51 @@
+#include "Point.h"
+#include <stdio.h>
+
+Point::Point()
+{
+	printf("I build a pointer with x %d and y %d.\n",x ,y);
+
+	//(Room*) my_rooms = New Room[10];
+	//my_player = new Player("superman", "DESCRIPTION");
+}
+
+Point::Point(const Point& p) : x(p.x), y(p.y)
+{
+}
+
+Point::~Point()
+{
+	printf("Jeje, the build is destroyed :3\n");
+
+	//delete[] my_rooms;
+	//delete my_player;
+}
+
+void Point::SetZero()
+{
+	x = 0;
+	y = 0;
+}
+
+void Point::SetPoint(int x, int y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+void Point::SetPoint(Point data_referent)
+{
+	x = data_referent.x;
+	y = data_referent.y;
+}
+
+bool Point::isPointZero() const
+{
+	return x == 0 && y == 0;
+}
+
+void Point::DistanceTo(Point data_referent)
+{
+	x = data_referent.x - x;
+	y = data_referent.y - y;
+}
