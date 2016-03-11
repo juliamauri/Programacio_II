@@ -47,14 +47,14 @@ public:
 };
 
 class goblin :public Bicho{
-public:
+
 	void attack(){ printf("Soy un goblin y te ataco sin piedad :P"); }
 	void move(){ printf("Soy un goblin y me muevo fast."); }
 
 };
 
 class Troll :public Bicho{
-public:
+
 	void attack(){ printf("Soy un troll y te meto un ostiaco."); }
 	void move(){ printf("Soy un trol y me muevo slow."); }
 
