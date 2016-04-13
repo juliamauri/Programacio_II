@@ -29,7 +29,6 @@ public:
 		delete[] buffer;
 	}
 
-	//fer metode push_back(principi) i push_front(al principi)
 	void push_back(const TYPE &element){
 		
 		if (capacity == num_elements)
@@ -63,7 +62,6 @@ public:
 			delete[] buffer;
 			buffer = temp;
 		}
-
 		num_elements++;
 		for (unsigned int i = 1; i < num_elements; i++)
 			buffer[i] = buffer[i-1];
