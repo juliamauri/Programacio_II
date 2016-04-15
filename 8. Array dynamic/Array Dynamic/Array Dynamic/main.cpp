@@ -2,8 +2,10 @@
 #include <stdio.h>
 
 int main(){
+	Vector<int> a(2);
 	Vector<int> v;
 	Vector<int> c;
+	
 
 	v.push_back(9);
 	v.PaintVector();
@@ -16,6 +18,7 @@ int main(){
 	v.push_front(3);
 
 	v.PaintVector();
+
 
 
 	bool jej = c.empty();

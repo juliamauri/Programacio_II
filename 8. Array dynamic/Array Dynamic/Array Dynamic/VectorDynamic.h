@@ -23,6 +23,11 @@ public:
 		for (unsigned int i = 0; i < num_elements; ++i)
 			buffer[i] = copy.buffer[i];
 	}
+
+	Vector(unsigned int size)
+	{
+		buffer = new TYPE[capacity = size];
+	}
 	
 	~Vector()
 	{
