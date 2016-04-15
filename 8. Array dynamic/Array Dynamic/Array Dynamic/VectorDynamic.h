@@ -1,6 +1,8 @@
 #ifndef __VECTOR__
 #define __VECTOR__
 
+#include <assert.h>
+
 template<class TYPE>
 class Vector{
 private:
@@ -35,14 +37,16 @@ public:
 		delete[] buffer;
 	}
 
+	TYPE operator[](unsigned int i)const
+	{
+		assert(i < num_elements);
+		return buffer[i];
+	}
+
 	//Source http://www.tutorialspoint.com/cplusplus/subscripting_operator_overloading.htm
 	TYPE &operator[](const unsigned int& i)
 	{
-		if (i > capacity)
-		{
-			// return first element.
-			return buffer[0];
-		}
+		assert(i < num_elements);
 		return buffer[i];
 	}
 
