@@ -37,18 +37,20 @@ public:
 		delete[] buffer;
 	}
 
-	TYPE operator[](unsigned int i)const
-	{
-		assert(i < num_elements);
-		return buffer[i];
-	}
-
 	//Source http://www.tutorialspoint.com/cplusplus/subscripting_operator_overloading.htm
 	TYPE &operator[](const unsigned int& i)
 	{
 		assert(i < num_elements);
 		return buffer[i];
 	}
+
+	TYPE operator[](unsigned int i)const
+	{
+		assert(i < num_elements);
+		return buffer[i];
+	}
+
+
 
 	void push_back(const TYPE &element){
 		
