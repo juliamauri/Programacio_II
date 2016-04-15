@@ -8,6 +8,7 @@ private:
 	unsigned int capacity = 10;
 	unsigned int num_elements = 0;
 	
+	
 
 public:
 	Vector()
@@ -32,6 +33,17 @@ public:
 	~Vector()
 	{
 		delete[] buffer;
+	}
+
+	//Source http://www.tutorialspoint.com/cplusplus/subscripting_operator_overloading.htm
+	TYPE &operator[](const unsigned int& i)
+	{
+		if (i > capacity)
+		{
+			// return first element.
+			return buffer[0];
+		}
+		return buffer[i];
 	}
 
 	void push_back(const TYPE &element){
@@ -97,8 +109,37 @@ public:
 		return capacity;
 	}
 
-	void pop_back(){
-		buffer[num_elements--] = 0;
+	bool pop_back(TYPE& value){
+		if (num_elements != 0){
+			TYPE temp = buffer[num_elements - 1];
+			if (num_elements-- >= 0)
+				num_elements = 0;
+			value = temp;
+			return true;
+		}
+		else
+			return false;
+	}
+
+	bool pop_back(unsigned int resize, TYPE& value){
+		if (num_elements != 0){
+			TYPE temp;
+			for (resize; resize > 0; resize--){
+				if (num_elements == 1)
+					temp = buffer[0];
+				else
+					temp = buffer[num_elements - 1];
+
+				if (num_elements == 0)
+					num_elements = 0;
+				else
+					num_elements--;
+			}
+			value = temp;
+			return true;
+		}
+		else
+			return false;
 	}
 
 	void shrink_to_fit(){
