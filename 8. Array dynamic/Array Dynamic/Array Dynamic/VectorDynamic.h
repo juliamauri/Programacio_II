@@ -103,8 +103,7 @@ public:
 	}
 
 	void clean(){
-		delete[] buffer;
-		buffer = new TYPE[capacity];
+		num_elements = 0;
 	}
 
 	int size(){
@@ -160,6 +159,8 @@ public:
 
 		buffer = temp;
 	}
+
+	//at(), [] don't use assert..
 
 };
 
