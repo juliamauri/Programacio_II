@@ -68,15 +68,20 @@ bool My_String::operator==(const My_String str) const{
 
 void My_String::tokens(const char* detection, Vector<My_String*>& ptr){
 	
-	char* rest;
+	char* rest = nullptr;
 	bool flag = true;
 	unsigned int i = 0;
 	do{
 		strtok_s(ptr[i++]->buffer, detection, &rest);
 		My_String* send = new My_String(rest);
 		if (*send == "")
+		{
+			delete send;
 			flag = false;
+		}
 		else
 			ptr.push_back(send);
 	} while (flag);
+
+	
 }
