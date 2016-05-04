@@ -1,15 +1,18 @@
 
+#ifndef __LINKED_LIST_H__
+#define __LINKED_LIST_H__
+
 template<class TYPE>
-struct node
+struct Node
 {
 public:
 	TYPE data;
-	node* next = nullptr;
+	Node* next = nullptr;
 
 public:
-	node(const TYPE& data) : data(data){}
+	Node(const TYPE& data) : data(data){}
 
-	~node(){}
+	~Node(){}
 };
 
 
@@ -17,12 +20,10 @@ template<class TYPE>
 class list
 {
 private:
-	node<TYPE>* first = nullptr;
+	Node<TYPE>* first = nullptr;
 
 public:
-	list(){}
-
-	//list(node& first): first(first){}
+	list(Node<TYPE>* first) : first(first){}
 
 	~list(){}
 
@@ -34,7 +35,7 @@ public:
 	unsigned int size() const
 	{
 		unsigned int ret = 0;
-		node<TYPE>* temp = first;
+		Node<TYPE>* temp = first;
 		while (temp != nullptr)
 		{
 			temp = temp->next;
@@ -43,21 +44,63 @@ public:
 		return ret;
 	}
 	
-	node<TYPE>* end()
+
+	Node<TYPE>* end()const
 	{
-		node<TYPE>* temp = first;
-		if (temp != nullptr)
-		{
-			while (temp != nullptr)
-			{
+		Node<TYPE>* temp = first;
+		if (empty() == false){
+			while (temp->next != nullptr)
 				temp = temp->next;
-			}
-			return temp;
 		}
 		return temp;
 	}
 
-	//push_back()
-	//push_front()
+	void pushback(const TYPE& data){
+		Node<TYPE>* it = end();
+		if (it != nullptr){
+			it->next = new Node<TYPE>(data);
+		}
+		else{
+			first = new Node<TYPE>(data);
+		}
+	}
+
+	void pushfront(const TYPE& data){
+		Node<TYPE>* temp = first;
+		first = new Node<TYPE>(data);
+		first->next = temp;
+	}
+
+
+	bool pop_back(){
+		if (first != nullptr){
+			Node<TYPE>* temp = first;
+			Node<TYPE>* last = temp;
+			while (temp->next != nullptr){
+				last = temp;
+				temp = temp->next;
+			}
+			if (last->next != nullptr)
+				last->next = nullptr;
+			else
+				first = nullptr;
+
+			delete temp;
+			return true;
+		}
+		return false;
+	}
+
+	bool pop_front(){
+		if (first != nullptr){
+			Node<TYPE>* temp = first;
+			first = first->next;
+			delete temp;
+			return true;
+		}
+		return false;
+	}
 	
 };
+
+#endif // !__LINKED_LIST_H__
