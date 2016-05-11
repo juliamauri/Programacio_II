@@ -100,6 +100,41 @@ public:
 		}
 		return false;
 	}
+
+	bool erase(Node* tokill){
+		if (tokill != nullptr){
+			Node* temp = first;
+			if (tokill != first){
+				while (temp->next != tokill){
+					temp = temp->next;
+				}
+				temp->next = tokill->next;
+				delete tokill;
+				return true;
+			}
+			first = first->next;
+			delete tokill;
+		}
+		return false;
+	}
+
+	bool insert(Node* afterIns, const TYPE& data){
+		Node* newNode = new Node(data);
+		if (afterIns != nullptr){
+			if (afterIns != first){
+				Node* temp = first;
+				while (temp->next != afterIns){
+					temp = temp->next;
+				}
+				newNode->next = afterIns;
+				temp->next = newNode;
+				return true;
+			}
+			newNode->next = afterIns;
+			first = newNode;
+			return true;
+		}
+	}
 	
 };
 
