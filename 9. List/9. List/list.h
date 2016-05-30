@@ -1,53 +1,52 @@
-
 #ifndef __LINKED_LIST_H__
 #define __LINKED_LIST_H__
-
-template<class TYPE>
+/*
+template <class TYPE>
 struct Node
 {
-public:
-	TYPE data;
-	Node* next = nullptr;
-
-public:
-	Node(const TYPE& data) : data(data){}
-
-	~Node(){}
+TYPE data;
+Node* next = nullptr;
+Node(const TYPE& data) : data(data){};
+~Node(){};
 };
+*/
 
-
-template<class TYPE>
-class list
+template <class	TYPE>
+class List
 {
-private:
-	Node<TYPE>* first = nullptr;
+public:
+	struct Node
+	{
+		TYPE data;
+		Node* next = nullptr;
+
+		Node(const TYPE& data) : data(data){};
+		~Node(){};
+	};
+
+	Node* first = nullptr;
 
 public:
-	list(Node<TYPE>* first) : first(first){}
 
-	~list(){}
+	List(Node* first) : first(first){};
+	~List(){};
 
-	bool empty() const
-	{
-		return first == nullptr;
+	bool empty() const{
+		return (first == nullptr);
 	}
 
-	unsigned int size() const
-	{
+	unsigned int size() const{
 		unsigned int ret = 0;
-		Node<TYPE>* temp = first;
-		while (temp != nullptr)
-		{
+		Node* temp = first;
+		while (temp != nullptr){
 			temp = temp->next;
 			ret++;
 		}
 		return ret;
 	}
-	
 
-	Node<TYPE>* end()const
-	{
-		Node<TYPE>* temp = first;
+	Node* end()const{
+		Node* temp = first;
 		if (empty() == false){
 			while (temp->next != nullptr)
 				temp = temp->next;
@@ -56,26 +55,25 @@ public:
 	}
 
 	void pushback(const TYPE& data){
-		Node<TYPE>* it = end();
+		Node* it = end();
 		if (it != nullptr){
-			it->next = new Node<TYPE>(data);
+			it->next = new Node(data);
 		}
 		else{
-			first = new Node<TYPE>(data);
+			first = new Node(data);
 		}
 	}
-
 	void pushfront(const TYPE& data){
-		Node<TYPE>* temp = first;
-		first = new Node<TYPE>(data);
+		Node* temp = first;
+		first = new Node(data);
 		first->next = temp;
 	}
 
 
 	bool pop_back(){
 		if (first != nullptr){
-			Node<TYPE>* temp = first;
-			Node<TYPE>* last = temp;
+			Node* temp = first;
+			Node* last = temp;
 			while (temp->next != nullptr){
 				last = temp;
 				temp = temp->next;
@@ -93,7 +91,7 @@ public:
 
 	bool pop_front(){
 		if (first != nullptr){
-			Node<TYPE>* temp = first;
+			Node* temp = first;
 			first = first->next;
 			delete temp;
 			return true;
@@ -101,7 +99,10 @@ public:
 		return false;
 	}
 
+
+	//TODO erase && insert
 	bool erase(Node* tokill){
+		//NEED AN ITERATOR, would be useful to have a doube direction list
 		if (tokill != nullptr){
 			Node* temp = first;
 			if (tokill != first){
@@ -117,6 +118,8 @@ public:
 		}
 		return false;
 	}
+
+
 
 	bool insert(Node* afterIns, const TYPE& data){
 		Node* newNode = new Node(data);
@@ -135,7 +138,7 @@ public:
 			return true;
 		}
 	}
-	
 };
+
 
 #endif // !__LINKED_LIST_H__
